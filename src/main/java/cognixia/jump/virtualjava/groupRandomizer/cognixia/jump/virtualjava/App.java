@@ -12,7 +12,7 @@ public class App
     	//To start: Initialize a ArrayList<String> of the names (students, team-mates, etc.), utilziing 'Arrays.asList()', that you would like to randomly separate, create groups, and select Team Leaders for
     	
     	//Matt & Gordon's Class - ArrayList<String> of student names
-    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Brooks McCament", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Dezmon Hall", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa",  "Kahan Raval", "Lindsay Prescott", "Malik E.", "Mathias Taylor", "Maurice B.", "Michael Mejia", "Mishal Baig", "Ramon Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
+    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Brooks McCament", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik E.", "Mathias Taylor", "Maurice B.", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
         
     	//Orquidia & Daniel's Class - ArrayList<String> of student names
 //    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
@@ -23,13 +23,13 @@ public class App
         System.out.println(" ");
         
         //Calling group generate & randomize method, passing 'students' as argument
-        groupRandomizeGenerator(students);
+        randomGroupGenerator(students);
     }
     
     public static List<String> sortGroupAlphabetically(List<String> teamTempStor)
     {
     	//For our class purposes, each group we randomly generate needs to have a Team Leader
-    	//To accomplish this, we have initially decided that once each randomized/generated team in fully populated by my algo, we want to alphabetically ascending by their first name sort the newly generated team and the Team Leader will be the individual first listed
+    	//To accomplish this, we have initially decided that once each randomized/generated team in fully populated by my algo, we want to alphabetically sort in ascending order by the student's first name and the Team Leader will be the first individual 
     	//The Team Leader selection logic will change over time to ensure fair distribution of responsibilities to students, where I will be adding additional helper methods like this one so they can be called upon whenever they are needed depending on how we will to select Team Leader's
     	
     	//We use 'Collections.sort()' to alphabetically sort the given 'teamTempStor' List<String> parameter by First Name, and then return it to the calling method to be utilized as needed
@@ -38,7 +38,7 @@ public class App
     	return teamTempStor;
     }
 	
-	public static void groupRandomizeGenerator(List<String> students)
+	public static void randomGroupGenerator(List<String> students)
 	{
 		//Calculating the number of students we have been given to randomize/group together from the given 'students' parameter
 		int numStudents =  students.size();
@@ -59,9 +59,36 @@ public class App
 				//The random int ('randInt') returned will serve as the index of the student we are going to group/randomize next
 				int randInt = (int)(numStudents * Math.random());
 				
+				//Our first conditional "if" check is to see if the student we are currently iterating through is the final name in 'students'
+				//By doing this conditional check first, this algo can now dynamically generate random teams no matter if ArrayList 'students' has an even or odd length/size or the specified group size(logic for that below)
+				if (numStudents - 1 == 0) 
+				{
+					//Using '.get()' to retrieve the String value (aka the student's name) of the element @ the index of 'randInt', removing from 'students'
+					teamTempStor.add(students.get(randInt));
+					students.remove(randInt);
+					
+					//Calling sorting helper method to determine Team Leader
+					sortGroupAlphabetically(teamTempStor);
+					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
+					System.out.println("   Team " + teamNum);
+					System.out.println("<---------->");
+					
+					//Using a 'forEach' loop to print the students names of the new group to the console
+					for (String stu: teamTempStor)
+					{
+						System.out.println(stu);
+					}
+					System.out.println("<---------->");
+					System.out.println(" ");
+					
+					//To ensure our loop or its indexer do not lose track of the changes we've made to 'students', we decrement both 'idx' & 'numStudents' to account for it
+					numStudents--;
+					idx--;
+				}
+				
 				//For our specific class purposes, we wanted to limit each group to a maximum of (5)
 				//Here, if the current teamTempStor < 5: we proceed to add the current selected element in 'students' to 'tempTeamStor'
-				if (teamTempStor.size() < 5)
+				else if (teamTempStor.size() < 5)
 				{
 					//Using '.get()' to retrieve the String value (aka the student's name) of the element @ the index of 'randInt'
 					teamTempStor.add(students.get(randInt));
