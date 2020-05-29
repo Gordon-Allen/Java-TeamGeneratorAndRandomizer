@@ -9,7 +9,7 @@ public class App
 {
     public static void main(String[] args)
     {
-    	//To start: Initialize a ArrayList<String> of the names (students, team-mates, etc.), utilziing 'Arrays.asList()', that you would like to randomly separate, create groups, and select Team Leaders for
+    	//To start: Initialize a ArrayList<String> of the names (students, team-mates, etc.), utilizing 'Arrays.asList()', that you would like to randomly separate, create groups, and select Team Leaders for
     	
     	//Matt & Gordon's Class - ArrayList<String> of student names
     	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Brooks McCament", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik E.", "Mathias Taylor", "Maurice B.", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
@@ -17,7 +17,7 @@ public class App
     	//Orquidia & Daniel's Class - ArrayList<String> of student names
 //    	ArrayList<String> students = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
     	
-    	System.out.println( "Welcome to Cognixia JUMP's Group Generator & Randomizer!" );
+    	System.out.println( "Welcome to Cognixia JUMP's Class Group Generator!" );
         System.out.println(" ");
         System.out.println("Here are your newly generated and randomized teams:");
         System.out.println(" ");
@@ -34,6 +34,16 @@ public class App
     	
     	//We use 'Collections.sort()' to alphabetically sort the given 'teamTempStor' List<String> parameter by First Name, and then return it to the calling method to be utilized as needed
     	Collections.sort(teamTempStor);
+    	
+    	return teamTempStor;
+    }
+    
+    public static List<String> sortGroupAlphabeticallyReverse(List<String> teamTempStor)
+    {
+    	//Team Leader Random Selection
+    	
+    	//We use 'Collections.sort()' to reverse alphabetically sort the given 'teamTempStor' List<String> parameter by First Name (Team Leader will be first name in newly sorted list), and then return it to the calling method to be utilized as needed
+    	Collections.sort(teamTempStor, Collections.reverseOrder());
     	
     	return teamTempStor;
     }
@@ -67,16 +77,20 @@ public class App
 					teamTempStor.add(students.get(randInt));
 					students.remove(randInt);
 					
-					//Calling my sorting helper method to determine Team Leader,
-					sortGroupAlphabetically(teamTempStor);
+					//Team Leader Selection OPTION #1: Calling sorting helper method to determine Team Leader
+//					sortGroupAlphabetically(teamTempStor);
+					
+					//Team Leader Selection OPTION #2: Calling sorting helper method #2 to determine Team Leader
+					sortGroupAlphabeticallyReverse(teamTempStor);
 					
 					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
 					System.out.println("   Team " + teamNum);
 					System.out.println("<---------->");
 					
-					//Using a 'forEach' loop to print the students names of the new group to the console
+					//We use a regular 'for' loop here to print the students names of the new group to the console over a 'forEach' loop so that we can selectively increment our indexer ('x') after the Team Leader's name has been printed
 					for (int x = 0; x < teamTempStor.size(); x++)
 					{
+						//'IF' our indexer == 0 (i.e. the first student randomly inserted into the newly created group, the group's 'Team Leader'), we move to printing the student's name while specifying
 						if (x == 0)
 						{
 							System.out.println("Team Leader: " + teamTempStor.get(x));
@@ -112,7 +126,12 @@ public class App
 				//Once 'teamTempStor' reaches (5) total elements/group-members and fails the first 'if' conditional statement, we have completed this team and move to printing out the completed randomized/grouped of (5) students
 				else if (teamTempStor.size() == 5)
 				{
-					sortGroupAlphabetically(teamTempStor);
+					//Calling sorting helper method to determine Team Leader
+//					sortGroupAlphabetically(teamTempStor);
+					
+					//Team Leader Selection OPTION #2: Calling sorting helper method #2 to determine Team Leader
+					sortGroupAlphabeticallyReverse(teamTempStor);
+					
 					//Utilizing the int variable we initialized earlier ('teamNum') to specific team segmentation/grouping
 					System.out.println("   Team " + teamNum);
 					System.out.println("<---------->");
@@ -145,7 +164,7 @@ public class App
 				}				
 			}
 		}
-		System.out.println("Thank you for using Cognixia JUMP's Group Generator & Randomizer!");
+		System.out.println("Thank you for using Cognixia JUMP's Class Group Generator!");
 		System.out.println("<<< Gordon Allen - 2020 >>>");
 	}
 }
