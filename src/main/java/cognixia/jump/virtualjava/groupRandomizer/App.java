@@ -1,4 +1,4 @@
-package cognixia.jump.virtualjava.groupRandomizer.cognixia.jump.virtualjava;
+package cognixia.jump.virtualjava.groupRandomizer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public class App
     
     public static void generatedTeamConsolePrinter(List<String> teamTempStor, int teamNum)
     {
-    	//Utilizing int parameter's "teamNum" to specific team segmentation and grouping
+    	//Utilizing int parameter "teamNum" to specific team segmentation and grouping
     	System.out.println("   Team " + teamNum);
 		System.out.println("<---------->");
 		
