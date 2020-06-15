@@ -18,8 +18,8 @@ public class App
     		System.out.println( "Welcome to Cognixia JUMP's Class Generator App!" );
             System.out.println(" ");
             System.out.println("Which class would you like generate lists/groups for?:");
-            System.out.println("1) Matt's & Gordon's Class");
-            System.out.println("2) Orquidia's & Daniel's Class");
+            System.out.println("1) 11AM EST Class");
+            System.out.println("2) 9AM EST Class");
             System.out.println(" ");
             System.out.println("3) EXIT App");
             
@@ -28,7 +28,7 @@ public class App
             switch(classChoiceUserInput)
         	{
         	  case 1:
-        		ArrayList<String> studentsMG = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Anthony Shahid" ,"Brooks McCament", "Calvin Houser", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "Dakota Purvis", "David Morales", "Gurmat Sandhu", "Haley Howell", "Haripriya Vasireddy", "Humza Sheikh", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik East", "Mathias Taylor", "Michael Mejia", "Mishal Baig", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
+        		ArrayList<String> studentsMG = new ArrayList<String>(Arrays.asList("Adebayo Ajayi", "Anthony Russell" , "Anthony Shahid", "Calvin Houser", "Carleton Thompson", "Colette Onenda", "Colt Lehr", "David Morales", "Haley Howell", "Haripriya Vasireddy", "Jack Liegey", "Jamie Vue", "Jayde Doetschman", "Kevin Fang", "Krishna Thapa", "Lindsay Prescott", "Malik East", "Mathias Taylor", "Michael Mejia", "Ramon ('Dylan') Aboy", "Robert Pytel", "Santos Tapia", "Tersa Almaw", "Tom Burch", "Vinson Sorenson"));
               	
               	System.out.println("--> CLASS SELECTED: Matt's & Gordon's <--");
               	System.out.println(" ");
@@ -53,7 +53,7 @@ public class App
               	}
         	    break;
         	  case 2:
-        		ArrayList<String> studentsOD = new ArrayList<String>(Arrays.asList("Ainsley McWaters", "Alek Sung", "Ashley Williams", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elliot Blaser", "Elton Wee", "Fatih ", "Gabriella Middleton", "Joetta Hall", "Jun Liang", "Kacper ", "Ken Cheng", "Larkin Ingram", "Lori White", "Nahom Zena", "Phoca Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
+        		ArrayList<String> studentsOD = new ArrayList<String>(Arrays.asList("Abrham ", "Ainsley McWaters", "Alek Sung", "Bill Knobbe", "Caroline Rives", "Carson Jobe", "Cheick Kane", "D'Andre Guess", "Dante' Taylor", "Darreal Chambers", "Dezmon Hall", "Elton Wee", "Fatih Erkayiran", "Gabriella Middleton", "Jennifer Echavarria", "Joetta Hall", "Jun Liang", "Kacper Bebel", "Ken Cheng", "Larkin Ingram", "Lori White", "Nahom Zena", "Phocas Sunzu", "Ryan Tan", "Samidh Patel", "Seth Campbell", "Sidiki Camara", "Tara Kelly", "Taylor Rotolo", "Thomas Martinez", "Vinita Ray"));
               	
         		System.out.println("--> CLASS SELECTED: Orquidia's & Daniel's <--");
               	System.out.println(" ");
@@ -155,7 +155,7 @@ public class App
     		//Removing randomly selected and printed student name from 'students'
     		students.remove(randInt);
     		
-    		//Incrementing 'count' & decrementing 'numStudents' to account for our ccalculations
+    		//Incrementing 'count' & decrementing 'numStudents' to account for our calculations
     		count++;
     		numStudents--;
     	}
